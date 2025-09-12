@@ -6,16 +6,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.MainScreen
 import com.example.myapplication.ui.LocationDetailScreen
+import com.example.myapplication.ui.WelcomeScreen  // ADD THIS IMPORT
 import com.example.myapplication.data.LocationData
 
 @Composable
 fun CampusNavApp() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "main") {
+    NavHost(navController = navController, startDestination = "welcome") {
+        composable("welcome") {
+            WelcomeScreen(navController = navController)
+        }
         composable("main") {
             MainScreen(navController = navController)
         }
@@ -25,13 +28,12 @@ fun CampusNavApp() {
         ) { backStackEntry ->
             val locationId = backStackEntry.arguments?.getInt("locationId")
             val location = LocationData.locations.find { it.id == locationId }
-            LocationDetailScreen(location = location, navController = navController)
+            if (location != null) {
+                LocationDetailScreen(location = location, navController = navController)
+            } else {
+                // Fallback if location not found
+                MainScreen(navController = navController)
+            }
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewCampusNavApp() {
-    CampusNavApp()
 }
