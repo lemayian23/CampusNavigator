@@ -1,8 +1,10 @@
+// File: app/src/main/java/com/example/myapplication/ui/LocationDetailScreen.kt
 package com.example.myapplication.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth  // ADD THIS IMPORT
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -44,14 +46,19 @@ fun LocationDetailScreen(location: Location?, navController: NavController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-// Add buttons to LocationDetailScreen.kt
-        Button(onClick = { /* Add to favorites */ }) {
+        Button(
+            onClick = { /* Add to favorites */ },
+            modifier = Modifier.fillMaxWidth()  // This should work now
+        ) {
             Text("⭐ Add to Favorites")
         }
 
-        Button(onClick = {
-            // Show text directions like: "Go to Science Block, 2nd Floor"
-        }) {
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(
+            onClick = { /* Show directions */ },
+            modifier = Modifier.fillMaxWidth()  // This should work now
+        ) {
             Text("🚶 Get Directions")
         }
     }

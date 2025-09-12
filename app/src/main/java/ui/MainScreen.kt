@@ -47,6 +47,7 @@ fun MainScreen(navController: NavController) {
                         it.description.contains(searchText, ignoreCase = true)
             }) { location ->
                 LocationItem(location = location) {
+                    // Navigate to details screen
                     navController.navigate("details/${location.id}")
                 }
             }
