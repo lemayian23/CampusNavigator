@@ -23,4 +23,4 @@ A modern Android app built with Jetpack Compose that helps students navigate cam
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/campus-navigator.git
+   git clone https://github.com/lemayian23/CampusNavigator.git
