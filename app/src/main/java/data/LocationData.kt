@@ -4,11 +4,11 @@ object LocationData {
     val locations = listOf(
         Location(
             id = 1,
-            name = "Main Library",
+            name = "Library",
             category = "LIBRARY",
             description = "Central library with study spaces and books",
             coordinates = "-1.286389,36.817223",
-            building = "Library Complex"
+            building = "Library Complex opposite Main Canteen"
         ),
         Location(
             id = 2,
@@ -24,8 +24,8 @@ object LocationData {
             category = "ACADEMIC",
             description = "24/7 computer access with printers",
             coordinates = "-1.286200,36.817100",
-            building = "Science Block",
-            floor = "2nd Floor"
+            building = "D Block",
+            floor = "3rd Floor- D23"
         )
     )
 }

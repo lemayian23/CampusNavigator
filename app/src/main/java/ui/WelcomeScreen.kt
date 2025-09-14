@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -54,41 +53,52 @@ fun WelcomeScreen(navController: NavController) {
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFF667EEA),  // Soft blue
-                        Color(0xFF764BA2)   // Purple
+                        Color(0xFF2C3E50),  // Dark blue (academic color)
+                        Color(0xFF3498DB)   // Light blue
                     )
                 )
             )
     ) {
-        // Main content - centered vertically
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(horizontal = 32.dp)
                 .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Animated emoji icon (no import needed)
+            // University Navigation Icon
             AnimatedVisibility(
                 visible = showContent,
-                enter = fadeIn(animationSpec = tween(800)) +
-                        slideInVertically(initialOffsetY = { -40 }, animationSpec = tween(800))
+                enter = fadeIn(animationSpec = tween(1000)) +
+                        slideInVertically(initialOffsetY = { -50 }, animationSpec = tween(1000))
             ) {
-                Text(
-                    text = "🏫",  // Campus building emoji
-                    fontSize = 70.sp,
-                    modifier = Modifier.padding(bottom = 16.dp)
-                )
+                Box(
+                    modifier = Modifier
+                        .size(120.dp)
+                        .background(Color.White.copy(alpha = 0.2f), RoundedCornerShape(24.dp))
+                        .padding(20.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = "🏛️",  // University building
+                            fontSize = 48.sp
+                        )
+                        Text(
+                            text = "➡️",  // Navigation arrow
+                            fontSize = 28.sp,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
+                }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
-            // Animated title
+            // Title with academic feel
             AnimatedVisibility(
                 visible = showContent,
-                enter = fadeIn(animationSpec = tween(800, delayMillis = 200)) +
-                        slideInVertically(initialOffsetY = { 30 }, animationSpec = tween(800, delayMillis = 200))
+                enter = fadeIn(animationSpec = tween(1000, delayMillis = 300)) +
+                        slideInVertically(initialOffsetY = { 30 }, animationSpec = tween(1000, delayMillis = 300))
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
@@ -103,11 +113,12 @@ fun WelcomeScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
-                        text = "Your Guide to Campus Life",
+                        text = "University Wayfinding System",
                         color = Color.White.copy(alpha = 0.9f),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        fontStyle = FontStyle.Italic
                     )
                 }
             }
@@ -154,7 +165,7 @@ fun WelcomeScreen(navController: NavController) {
                         .clip(RoundedCornerShape(12.dp)),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.White,
-                        contentColor = Color(0xFF667EEA)
+                        contentColor = Color(0xFF2C3E50)  // Dark blue to match theme
                     )
                 ) {
                     Text(
